@@ -1,0 +1,46 @@
+package overriding;
+
+class Ferrari{
+	private int ye;
+	public Ferrari(int ye) {
+		this.ye=ye;
+	}
+	public int getYe() {
+		return ye;
+	}
+	public void speed() {
+		System.out.println(ye+"년식 페라리 속도 : 300km");
+	}
+}
+class NewFerrari extends Ferrari{
+	public void speed() {
+		System.out.println(getYe()+"년식 페라리 속도 : 5000km");//나한테 있는 메서드 우선 실행
+	}
+	public NewFerrari(int ye) {
+		super(ye);	
+	}
+	public void autoSystem() {
+		System.out.println("자동 운전모드로 전환합니다");
+	}
+}
+
+public class MainClass01 {
+public static void main(String[] args) {
+	/*
+		오버라이딩
+		상속받은 자식 메소드의 내용을 변경하는 것
+		부모 메소드와 다르게 자신에게 맞게 변경하여 사용한다
+		오버라이딩 조건
+		부모 메소드의 이름과 동일하게 만들어야 한다
+		자식의 접근 제한자는 부모의 접근 제한자보다 작으면 안된다
+		private < package < protected < public
+	 */
+	
+	Ferrari fe = new Ferrari(2023);
+	fe.speed();
+	NewFerrari nfe = new NewFerrari(2024);
+	nfe.speed();
+	nfe.autoSystem();
+	
+}
+}
